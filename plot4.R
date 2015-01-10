@@ -25,14 +25,26 @@ rm("data")
 # Part 4: Create Date & Time column
 subdata$DateTime <- paste(subdata$Date, subdata$Time)
 subdata$DateTime <- strptime(subdata$DateTime, format = "%d/%m/%Y %H:%M:%S")
+str(subdata)
 
 # Part 5: Create plot 3
 Sys.setlocale("LC_TIME", "English")
-plot(subdata$DateTime, subdata$Sub_metering_1, type="l", col="black", xlab=NA, ylab="Energy sub metering")
-lines(subdata$DateTime, subdata$Sub_metering_2, type="l", col="red")
-lines(subdata$DateTime, subdata$Sub_metering_3, type="l", col="blue")
-legend("topright", lty = 1, col = c("black", "red", "blue"), legend = c("Sub_metering_1", "Sub_metering_2", "Sub_metering_3"), cex=0.95)
+par(mfrow=c(2,2))
+  # Plot 1
+  plot(subdata$DateTime, subdata$Global_active_power, type="n", xlab=NA, ylab="Global Active Power (kilowatts)")
+  lines(subdata$DateTime, subdata$Global_active_power, type="l")
+  # Plot 2
+  plot(subdata$DateTime, subdata$Voltage, type="n", xlab="datetime", ylab="Voltage")
+  lines(subdata$DateTime, subdata$Voltage, type="l")
+  #Plot 3
+  plot(subdata$DateTime, subdata$Sub_metering_1, type="l", col="black", xlab=NA, ylab="Energy sub metering")
+  lines(subdata$DateTime, subdata$Sub_metering_2, type="l", col="red")
+  lines(subdata$DateTime, subdata$Sub_metering_3, type="l", col="blue")
+  legend("topright", lty = 1, bty="n", col = c("black", "red", "blue"), legend = c("Sub_metering_1", "Sub_metering_2", "Sub_metering_3"), cex=0.95)
+  #Plot 4
+  plot(subdata$DateTime, subdata$Global_reactive_power, type="n", xlab="datetime", ylab="Global_reactive_power")
+  lines(subdata$DateTime, subdata$Global_reactive_power, type="l")
 
 # Part 6: Create png file
-dev.copy(png, file="plot3.png", width=480, height=480)
+dev.copy(png, file="plot4.png", width=480, height=480)
 dev.off()

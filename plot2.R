@@ -28,7 +28,8 @@ subdata$DateTime <- strptime(subdata$DateTime, format = "%d/%m/%Y %H:%M:%S")
 
 # Part 5: Create plot 2
 Sys.setlocale("LC_TIME", "English")
-par(mar=c(5,5,4,5)+0.1)
 plot(subdata$DateTime, subdata$Global_active_power, type="l", xlab=NA, ylab="Global Active Power (kilowatts)")
+
+# Part 6: Create png file
 dev.copy(png, file="plot2.png", width=480, height=480)
 dev.off()

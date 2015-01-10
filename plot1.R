@@ -27,7 +27,8 @@ subdata$DateTime <- paste(subdata$Date, subdata$Time)
 subdata$DateTime <- strptime(subdata$DateTime, format = "%d/%m/%Y %H:%M:%S")
 
 # Part 5: Create plot 1
-par(mar=c(5,5,4,5)+0.1)
 hist(subdata$Global_active_power, col="red", xlab="Global Active Power (kilowatts)", main="Global Active Power")
+
+# Part 6: Create png file
 dev.copy(png, file="plot1.png", width=480, height=480)
 dev.off()
