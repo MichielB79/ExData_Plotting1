@@ -29,7 +29,7 @@ For best plotting results use R and not RStudio.
 
 1. First set the working directory where you want to create the plots
 
-2. Save the script in the working directory and run the four scripts in R 
+2. Save the scripts in the working directory and run the four scripts in R 
   - `source("plot1.R")`
   - `source("plot2.R")`
   - `source("plot3.R")`
